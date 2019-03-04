@@ -26,29 +26,23 @@ workbox.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-6aa1ed8a124dcdd3db2a.js"
+    "url": "webpack-runtime-93fbf0cc1d8ae9232de9.js"
   },
   {
-    "url": "app-e4d952fb1e3c89b70957.js"
+    "url": "app-d016047312d93d8eddec.js"
   },
   {
-    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-92c1cd81e725ecbc84ad.js"
+    "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-ea57f3a7784af0b7bbe7.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "1c03764561da1b2e2d3d398d45a95596"
+    "revision": "1a64d5ff6e1a3935029021b2c06a7fa7"
   },
   {
-    "url": "styles.a1e3226de724a2570055.css"
+    "url": "0-b1895823e547511cd636.js"
   },
   {
-    "url": "1-5a343ad6ed37fd6eae12.js"
-  },
-  {
-    "url": "component---src-pages-404-js-fd953ba6801e3d25c9a0.js"
-  },
-  {
-    "url": "styles-a8b864bc6a3ba4cda878.js"
+    "url": "component---src-pages-404-js-c9296bc9c0191a590a39.js"
   },
   {
     "url": "static/d/164/path---404-html-516-62a-NZuapzHg3X9TaN1iIixfv1W23E.json"
@@ -83,23 +77,20 @@ const navigationRoute = new workbox.routing.NavigationRoute(({ event }) => {
       const cacheName = workbox.core.cacheNames.precache
 
       return caches.match(offlineShell, { cacheName }).then(cachedResponse => {
-        if (cachedResponse) return cachedResponse
+        if (!cachedResponse) {
+          return fetch(offlineShell).then(response => {
+            if (response.ok) {
+              return caches.open(cacheName).then(cache =>
+                // Clone is needed because put() consumes the response body.
+                cache.put(offlineShell, response.clone()).then(() => response)
+              )
+            } else {
+              return fetch(event.request)
+            }
+          })
+        }
 
-        console.error(
-          `The offline shell (${offlineShell}) was not found ` +
-            `while attempting to serve a response for ${pathname}`
-        )
-
-        return fetch(offlineShell).then(response => {
-          if (response.ok) {
-            return caches.open(cacheName).then(cache =>
-              // Clone is needed because put() consumes the response body.
-              cache.put(offlineShell, response.clone()).then(() => response)
-            )
-          } else {
-            return fetch(event.request)
-          }
-        })
+        return cachedResponse
       })
     }
 
