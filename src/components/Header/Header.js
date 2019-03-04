@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '../Container';
-import { HeaderWrapper, HeaderInner, SiteTitle, Navigation } from './styled';
+import { HeaderWrapper, HeaderContainer, HeaderInner, SiteTitle, Navigation } from './styled';
 
 const Header = ({ title, navigation }) => (
   <HeaderWrapper>
-    <Container>
+    <HeaderContainer>
       <HeaderInner>
         <SiteTitle to="/">{title}</SiteTitle>
         {navigation && <Navigation>{navigation}</Navigation>}
       </HeaderInner>
-    </Container>
+    </HeaderContainer>
   </HeaderWrapper>
 );
 
@@ -23,7 +22,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  title: null,
+  title     : null,
   navigation: null,
 };
 

@@ -5,6 +5,7 @@ import { COLOR } from '../../constants';
 
 /* normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 const normalize = `
+  *{-webkit-font-smoothing: antialiased;-moz-osx-font-smoothing: grayscale;}
   html{line-height:1.15;-webkit-text-size-adjust:100%}
   body{margin:0}
   main{display:block}
@@ -24,17 +25,17 @@ const normalize = `
   button,input{overflow:visible}
   button,select{text-transform:none}
   [type=button],[type=reset],[type=submit],button{-webkit-appearance:button}
-  [type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}
-  [type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}
+  [type=button]:               : -moz-focus-inner, [type=reset]  :              : -moz-focus-inner, [type=submit]:: -moz-focus-inner, button:: -moz-focus-inner{border-style:none;padding:0}
+  [type=button]: -moz-focusring, [type=reset]    : -moz-focusring, [type=submit]: -moz-focusring,   button        : -moz-focusring{outline:1px dotted ButtonText}
   fieldset{padding:.35em .75em .625em}
   legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}
   progress{vertical-align:baseline}
   textarea{overflow:auto}
   [type=checkbox],[type=radio]{box-sizing:border-box;padding:0}
-  [type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}
+  [type=number]:: -webkit-inner-spin-button, [type=number]:: -webkit-outer-spin-button{height:auto}
   [type=search]{-webkit-appearance:textfield;outline-offset:-2px}
-  [type=search]::-webkit-search-decoration{-webkit-appearance:none}
-  ::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}
+  [type=search]: : -webkit-search-decoration{-webkit-appearance:none}
+               : : -webkit-file-upload-button{-webkit-appearance:button;font:inherit}
   details{display:block}
   summary{display:list-item}
   template{display:none}
@@ -42,25 +43,25 @@ const normalize = `
 `;
 
 const headerStyle = `
-  margin: 0;
+  margin       : 0;
   margin-bottom: 1rem;
-  font-weight: 700;
+  font-weight  : 500;
 `;
 
 export const ResetStyle = createGlobalStyle`
   ${normalize}
 
   * {
-    margin: 0;
-    padding: 0;
+    margin    : 0;
+    padding   : 0;
     box-sizing: border-box;
   }
 
   html {
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 16px;
+    font-size  : 14px;
     line-height: 1.5;
-    color: ${COLOR.BLACK};
+    color      : ${COLOR.BLACK};
   }
 
   body {
@@ -98,41 +99,43 @@ export const ResetStyle = createGlobalStyle`
   }
 
   p {
+    font-size    : 1.2rem;
+    line-height  : 1.4;
     margin-bottom: 1rem;
   }
 
   a {
     background-color: transparent;
-    color: ${COLOR.BLUE};
-    text-decoration: none;
+    color           : ${COLOR.BLUE};
+    text-decoration : none;
 
     &:focus,
     &:hover {
-      color: ${darken(0.2, COLOR.BLUE)};
+      color          : ${darken(0.2, COLOR.BLUE)};
       text-decoration: underline;
     }
   }
 
   ul, ol {
     margin-bottom: 1rem;
-    padding-left: 2rem;
+    padding-left : 2rem;
 
     ul, ol {
-      margin-top: 0.5rem;
+      margin-top   : 0.5rem;
       margin-bottom: 0.5rem;
     }
   }
 
   hr {
-    margin: 1rem 0;
-    height: 0.2rem;
+    margin    : 1rem 0;
+    height    : 0.2rem;
     background: ${rgba(COLOR.BLACK, 0.15)};
-    border: none;
+    border    : none;
   }
 
   blockquote {
-    margin: 0 0 1rem 1rem;
-    padding: 0.25rem 0 0.25rem 1rem;
+    margin     : 0 0 1rem 1rem;
+    padding    : 0.25rem 0 0.25rem 1rem;
     border-left: 0.2rem solid ${rgba(COLOR.BLACK, 0.15)};
 
     p:last-child {
@@ -141,19 +144,19 @@ export const ResetStyle = createGlobalStyle`
   }
 
   code {
-    padding: 0.05rem 0.4rem;
+    padding         : 0.05rem 0.4rem;
     background-color: ${rgba(COLOR.BLACK, 0.075)};
   }
 
   pre {
-    margin: 0;
-    margin-bottom: 1rem;
-    padding: 1rem;
+    margin          : 0;
+    margin-bottom   : 1rem;
+    padding         : 1rem;
     background-color: ${rgba(COLOR.BLACK, 0.075)};
-    font-size: 0.8rem;
+    font-size       : 0.8rem;
 
     code {
-      padding: 0;
+      padding         : 0;
       background-color: transparent;
     }
   }

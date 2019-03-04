@@ -1,8 +1,8 @@
 export const COLOR = {
-  WHITE: '#ffffff',
-  BLACK: '#000000',
-  REBECCA_PURPLE: '#663399',
-  BLUE: '#1a58cc',
+  WHITE      : '#ffffff',
+  BLACK      : '#4d4d4d',
+  THEME_COLOR: '#351919',
+  BLUE       : '#1a58cc',
 };
 
 export const NAV_ITEMS = [
